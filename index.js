@@ -10,7 +10,7 @@ try {
 }*/
 
 const Firebase = require("firebase-admin");
-const cred = require("./serviceAccountKey.json")
+const cred = require("../serviceAccountKey.json")
 
 Firebase.initializeApp({
   credential: Firebase.credential.cert(cred),
