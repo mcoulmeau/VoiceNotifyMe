@@ -1,7 +1,6 @@
 require('dotenv').config()
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const discordToken = "ODY3ODUyMjI4NDQ1OTk1MDM5.YPnIXw.HFEcuGmkO6_m71X7MvylR7YgVsQ"
 
 /*const DBL = require("dblapi.js");
 try {
