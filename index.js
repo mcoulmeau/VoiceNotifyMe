@@ -52,7 +52,8 @@ bot.on('voiceStateUpdate', async (oldState, state) => {
       if (textChannel == undefined) return; //return if text channel does not exists
       var rolesList = "";
       if (dbChannelData.roles != undefined) rolesList = dbChannelData.roles.map(el => ' <@&' + el + '>'); //mention roles
-      textChannel.send(`**:microphone2: A voice chat is taking place in the "${voiceChannel.name}" channel !\n${rolesList}**\n${dbServerData}`) //send message
+      textChannel.send(`**:microphone2: A voice chat is taking place in the "${voiceChannel.name}" channel !\n${rolesList}**`) //send message
+      console.log(`ServerData: ${dbServerData`);
     });
   } catch (ex) {
     console.log(`Error : ${ex}`);
