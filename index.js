@@ -2,13 +2,6 @@ require('dotenv').config()
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-/*const DBL = require("dblapi.js");
-try {
-  const dbl_ = new DBL(process.env.VOICENOTIFY_TOPGG_TOKEN, bot);
-} catch (ex) {
-  console.log(`Error : ${ex}`);
-}*/
-
 const Firebase = require("firebase-admin");
 const cred = require("../serviceAccountKey.json")
 
@@ -46,7 +39,7 @@ bot.on('voiceStateUpdate', async (oldState, state) => {
       var dbChannelData = dbServerData[voiceChannel.id];
       if (dbChannelData == undefined) return; //return if voice channel is not in db
       if (voiceChannel.members.array().length < dbChannelData.min) return; //return if threshold is not reached
-      //if (Date.now() - lastJoinTime.get(voiceChannel.id) < 30 * 60 * 1000) return lastJoinTime.set(voiceChannel.id, Date.now()); //return if last join is >30m ago + update last join
+      if (Date.now() - lastJoinTime.get(voiceChannel.id) < 30 * 60 * 1000) return lastJoinTime.set(voiceChannel.id, Date.now()); //return if last join is >30m ago + update last join
       lastJoinTime.set(voiceChannel.id, Date.now()); //update last join
       var textChannel = state.guild.channels.cache.find(ch => ch.id == dbChannelData.text);
       if (textChannel == undefined) return; //return if text channel does not exists
